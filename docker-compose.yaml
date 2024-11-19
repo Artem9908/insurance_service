@@ -1,0 +1,26 @@
+version: '3.9'  # Используйте актуальную версию Docker Compose
+
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/insurance_db
+    # Уберите или скорректируйте монтирование томов
+    # volumes:
+    #   - .:/app
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: insurance_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:

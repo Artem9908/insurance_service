@@ -1,0 +1,12 @@
+[
+    {
+        "cargo_type": "Glass",
+        "date": "2020-06-01",
+        "rate": 0.04
+    },
+    {
+        "cargo_type": "Other",
+        "date": "2020-06-01",
+        "rate": 0.01
+    }
+]
