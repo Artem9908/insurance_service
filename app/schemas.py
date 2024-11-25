@@ -1,18 +1,24 @@
 from pydantic import BaseModel
-from datetime import date
+import datetime
+from typing import Optional
 
 class InsuranceRequest(BaseModel):
     cargo_type: str
     declared_value: float
-    date: date
+    date: datetime.date
 
 class RateBase(BaseModel):
     cargo_type: str
-    date: date
+    date: datetime.date
     rate: float
 
 class RateCreate(RateBase):
     pass
+
+class RateUpdate(BaseModel):
+    cargo_type: Optional[str] = None
+    date: Optional[datetime.date] = None
+    rate: Optional[float] = None
 
 class Rate(RateBase):
     id: int
